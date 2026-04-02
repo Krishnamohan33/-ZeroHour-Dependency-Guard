@@ -1,29 +1,27 @@
 #!/usr/bin/env node
 
-const { checkDependencies } = require("../lib/checker");
-const { execSync } = require("child_process");
+const { checkNewDependencies } = require("../lib/checker");
 
 async function run() {
-    console.log("🔍 ZeroHour Dependency Guard Running...\n");
+    console.log("🔍 ZeroHour: Checking new dependencies...\n");
 
-    const result = await checkDependencies();
+    const warnings = await checkNewDependencies();
 
-    if (!result.safe) {
-        console.log("❌ Unsafe dependencies detected:\n");
+    if (warnings.length > 0) {
+        console.log("⚠️ Newly added risky packages:\n");
 
-        result.issues.forEach(pkg => {
+        warnings.forEach(pkg => {
             console.log(
-                `- ${pkg.name}@${pkg.version} (published ${pkg.ageHours.toFixed(2)} hrs ago)`
+                `- ${pkg.name}@${pkg.version} (${pkg.ageHours.toFixed(2)} hrs old)`
             );
         });
 
-        console.log("\n🛑 Install blocked for safety.");
-        process.exit(1);
+        console.log("\n⚠️ Review before using.\n");
+    } else {
+        console.log("✅ No risky new dependencies.\n");
     }
 
-    console.log("✅ All dependencies are safe.\n");
-
-    execSync("npm install", { stdio: "inherit" });
+    process.exit(0);
 }
 
 run();
