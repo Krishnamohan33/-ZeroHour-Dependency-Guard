@@ -1,45 +1,50 @@
 # ⚡ ZeroHour Dependency Guard
 
-> Block zero-hour npm supply chain attacks before they hit your project.
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-black?logo=github)](https://github.com/Krishnamohan33/-ZeroHour-Dependency-Guard/tree/main)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](#-license)
+[![Node.js](https://img.shields.io/badge/Node.js-%3E%3D14-brightgreen?logo=node.js)](https://nodejs.org/)
+[![Security](https://img.shields.io/badge/Security-Zero--Hour%20Protection-red)](#-why-this-matters)
+
+> 🚫 Block zero-hour npm supply chain attacks before they hit your project.
 
 ---
 
 ## 🚀 Overview
 
-**ZeroHour Dependency Guard** is a lightweight CLI tool that protects your project from **freshly published npm packages**, which are often the highest-risk window for supply chain attacks.
+**ZeroHour Dependency Guard** is a lightweight, security-focused CLI tool designed to protect Node.js projects from **newly published npm package versions**, which are often the highest-risk entry point for supply chain attacks.
 
-Instead of blindly installing dependencies, this tool checks how recently a package version was published — and blocks installs if they fall within a dangerous time window.
+Instead of blindly installing dependencies, this tool introduces a **real-time safety check** that evaluates how recently each package version was published — and blocks installations that fall within a risky time window.
 
 ---
 
 ## 🔥 Why This Matters
 
-Many real-world npm attacks follow this pattern:
+Modern npm attacks commonly follow a dangerous pattern:
 
-* Malicious package gets published
-* Developers install it within minutes/hours
-* Damage happens before detection
+* ⚡ Malicious package gets published
+* 📥 Developers install it within minutes
+* 💥 Damage occurs before detection
 
-👉 This tool protects you during that **critical “zero-hour” window**
+👉 **ZeroHour Guard protects you during this critical vulnerability window**
 
 ---
 
 ## ⚙️ Features
 
-* 🔍 Checks publish time of dependencies
-* 🚫 Blocks installation of recently published versions
-* ⚡ Fast and lightweight (no heavy dependencies)
-* 🧠 Simple logic, easy to extend
-* 💻 Works with any Node.js project
+* 🔍 Real-time dependency publish-time analysis
+* 🚫 Automatic blocking of newly published packages
+* ⚡ Lightweight and fast (no external dependencies)
+* 🧠 Simple, extensible architecture
+* 💻 Works across all Node.js projects
 
 ---
 
 ## 📦 Usage
 
-Run instantly without installation:
+Run instantly without installing:
 
 ```bash
-npx github:YOUR_USERNAME/zerohour-dep-guard install
+npx github:Krishnamohan33/-ZeroHour-Dependency-Guard install
 ```
 
 ---
@@ -69,18 +74,16 @@ added 120 packages
 ## ⚙️ How It Works
 
 1. Reads your `package.json`
-2. Fetches metadata from npm registry
-3. Checks publish timestamps for each dependency
-4. Calculates age in hours
-5. Blocks install if below threshold
+2. Fetches package metadata from npm registry
+3. Extracts publish timestamps for each version
+4. Calculates how recently each dependency was published
+5. Blocks install if within unsafe threshold
 
 ---
 
 ## 🧠 Default Policy
 
-* Blocks packages published within last **6 hours**
-
-This can be extended in future versions.
+* Blocks packages published within the last **6 hours**
 
 ---
 
@@ -100,11 +103,9 @@ zerohour-dep-guard/
 
 ## 🛠️ Local Development
 
-Clone and test:
-
 ```bash
-git clone https://github.com/YOUR_USERNAME/zerohour-dep-guard.git
-cd zerohour-dep-guard
+git clone https://github.com/Krishnamohan33/-ZeroHour-Dependency-Guard.git
+cd -ZeroHour-Dependency-Guard
 node bin/cli.js
 ```
 
@@ -117,35 +118,35 @@ zerohour install
 
 ---
 
+## 🛡️ Use Cases
+
+* Secure npm installs in production apps
+* CI/CD pipeline protection
+* Open-source project safety
+* Developer-first security tooling
+
+---
+
 ## 🔮 Roadmap
 
-* [ ] Config file (`.zerohourrc`)
+* [ ] `.zerohourrc` configuration support
 * [ ] Allowlist trusted packages
 * [ ] Custom time thresholds
 * [ ] GitHub Action integration
 * [ ] CI/CD enforcement
-* [ ] Dashboard (SaaS)
-
----
-
-## 🛡️ Use Cases
-
-* Secure npm installs in production projects
-* CI/CD pipeline protection
-* Open-source maintainers
-* Security-conscious teams
+* [ ] Web dashboard (SaaS vision)
 
 ---
 
 ## ⚠️ Disclaimer
 
-This tool provides an **additional layer of safety**, not a complete security solution.
+This tool provides an **additional security layer**, not a complete protection system.
 
 Always combine with:
 
 * `npm audit`
 * Lockfiles (`package-lock.json`)
-* Code reviews
+* Manual review of dependencies
 
 ---
 
@@ -164,13 +165,17 @@ MIT License
 
 ## ⭐ Support
 
-If you found this useful, consider giving a ⭐ on GitHub and sharing it.
+If you found this useful:
+
+* ⭐ Star the repo
+* 🔁 Share with developers
+* 🛠️ Contribute improvements
 
 ---
 
 ## 🚀 Vision
 
-> A future where developers never unknowingly install malicious code.
+> A future where developers never unknowingly install malicious dependencies.
 
 ---
 
